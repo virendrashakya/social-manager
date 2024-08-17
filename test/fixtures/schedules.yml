@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: one
+  scheduled_time: 2024-08-14 11:48:09
+  status: MyString
+
+two:
+  post: two
+  scheduled_time: 2024-08-14 11:48:09
+  status: MyString
