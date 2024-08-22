@@ -19,14 +19,14 @@ class User < ApplicationRecord
   after_create :set_default_plan
 
   def generate_jwt_token
-    JWT.encode({ user_id: self.id, exp: 24.hours.from_now.to_i }, Rails.application.credentials.secret_key_base)
+    JWT.encode({ user_id: self.id, exp: 24.hours.from_now.to_i }, Rails.application.credentials.secret_key_base, 'HS256')
   end
 
   # Decode JWT token method (used for logout or other actions)
   def self.decode_jwt_token(token)
     begin
       debugger
-      JWT.decode(token, Rails.application.credentials.secret_key_base)
+      JWT.decode(token, Rails.application.credentials.secret_key_base, { algorithm: 'HS256' })
     rescue JWT::ExpiredSignature
       nil # or handle the expiration case
     end
